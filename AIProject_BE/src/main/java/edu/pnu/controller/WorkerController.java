@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.pnu.domain.WorkerVO;
 import edu.pnu.service.WorkerService;
+import io.swagger.annotations.Api;
 
 @RestController
+@Api(description = "테이블 반환하는지 첫 테스트")
 public class WorkerController {
 
 	@Autowired
