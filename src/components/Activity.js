@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
+import moment from 'moment';
 
 function List() {
   const [data, setData] = useState([]);
@@ -31,7 +32,7 @@ function List() {
               <td>{item.user}</td>
               <td>{item.stat}</td>
               <td>{item.stat_label}</td>
-              <td>{item.recorded_time}</td>
+              <td>{moment(item.recorded_time).format('YY-MM-DD HH:mm:ss')}</td>
             </tr>
           ))}
         </tbody>
