@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 import edu.pnu.domain.MemberVO;
 import io.swagger.annotations.Api;
 
@@ -46,4 +47,5 @@ public class MemberController {
     public String error() {
         return "error"; // error.html 페이지로 이동
     }
+
 }

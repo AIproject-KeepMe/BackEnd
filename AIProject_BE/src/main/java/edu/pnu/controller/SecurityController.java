@@ -22,7 +22,7 @@ public class SecurityController {
 		System.out.println("admin 요청임");
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/templogin")
 	public void login() {
 	}
 

@@ -24,22 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/admin/**").hasRole("ADMIN");
 		
 		security.csrf().disable();
-		security.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccess", true);
+		security.formLogin().loginPage("/templogin").defaultSuccessUrl("/loginSuccess", true);
 		security.exceptionHandling().accessDeniedPage("/accessDenied");
-		security.logout().invalidateHttpSession(true).logoutSuccessUrl("/login");
+		security.logout().invalidateHttpSession(true).logoutSuccessUrl("/templogin");
 	}
 	
 	@Autowired
 	public void authenticate(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication()
-//		.withUser("manager")
-//		.password("{noop}manager123")
-//		.roles("MANAGER");
-//		
-//		auth.inMemoryAuthentication()
-//		.withUser("manager")
-//		.password("{noop}manager123")
-//		.roles("MANAGER");
 		
 		String query1 = "select id username, concat('{noop}', password) password, true enabled from member where id=?";
 		String query2 = "select id, role from member where id=?";
