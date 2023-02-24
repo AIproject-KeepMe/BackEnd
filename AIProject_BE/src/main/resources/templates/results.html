@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Results</h1>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>User</th>
+                    <th>Recorded Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="worker : ${workerList}">
+                    <td th:text="${worker.user}"></td>
+                    <td th:text="${#temporals.format(worker.recorded_time, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

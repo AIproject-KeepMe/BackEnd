@@ -18,10 +18,8 @@ public class MemberDAO {
     }
 
     public List<MemberVO> getMember(String id) {
-        String sql = "SELECT * FROM member WHERE id = ?";
+        String sql = "SELECT id, password, role, enabled FROM member WHERE id = ?";
         RowMapper<MemberVO> rowMapper = new BeanPropertyRowMapper<>(MemberVO.class);
         return jdbcTemplate.query(sql, rowMapper, id);
     }
-
-
 }

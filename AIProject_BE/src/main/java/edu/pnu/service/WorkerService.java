@@ -14,8 +14,12 @@ public class WorkerService {
 
 	@Autowired
 	WorkerDAO wd;
-
+	
 	public List<WorkerVO> getWorkerList() {
 		return wd.getWorkerList();
 	}
+	
+	 public List<WorkerVO> getWorkerResults() {
+	        return wd.getWorkerResults();
+	    }
 }
