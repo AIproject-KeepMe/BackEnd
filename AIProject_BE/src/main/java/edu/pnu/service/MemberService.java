@@ -15,7 +15,7 @@ public class MemberService {
         this.memberDAO = memberDAO;
     }
 
-    public List<MemberVO> getMember(String id, String password) {
-        return memberDAO.getMember(id, password);
+    public List<MemberVO> getMember(String id) {
+        return memberDAO.getMember(id);
     }
 }

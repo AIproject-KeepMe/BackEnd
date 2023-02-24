@@ -17,10 +17,10 @@ public class MemberDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<MemberVO> getMember(String id, String password) {
-        String sql = "SELECT * FROM member WHERE id = ? AND password = ?";
+    public List<MemberVO> getMember(String id) {
+        String sql = "SELECT * FROM member WHERE id = ?";
         RowMapper<MemberVO> rowMapper = new BeanPropertyRowMapper<>(MemberVO.class);
-        return jdbcTemplate.query(sql, rowMapper, id, password);
+        return jdbcTemplate.query(sql, rowMapper, id);
     }
 
 

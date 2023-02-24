@@ -17,7 +17,7 @@ public class LoginController {
 	public MemberService ms;
 	
     @GetMapping("/login")
-    public List<MemberVO> getMember(@RequestParam String id, @RequestParam String password) {
-        return ms.getMember(id, password);
+    public List<MemberVO> getMember(@RequestParam String id) {
+        return ms.getMember(id);
     }
 }

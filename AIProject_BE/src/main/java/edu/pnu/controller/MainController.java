@@ -21,7 +21,7 @@ public class MainController {
 
 	/*
 	 * 리액트 코드를 살펴보면 일단 /test에 들어와서 테이블을 긁도록 하고 있다.
-	 * 그래서 그 긁은 게 어디 쓰이나 봤더니 테스트라기 보다는 dashboard 오른쪽에서 쓰이고 있음
+	 * 그래서 그 긁은 게 어디 쓰이나 봤더니 테스트라기보다는 dashboard 오른쪽에서 쓰이고 있음
 	 * */
 	
 	@GetMapping("/test")
