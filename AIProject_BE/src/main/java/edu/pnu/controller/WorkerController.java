@@ -23,17 +23,17 @@ public class WorkerController {
 		return ws.getWorkerList();
 	}
 
-//	@GetMapping("/results")
-//	public List<WorkerVO> getWorkerResults() {
-//		return ws.getWorkerResults();
-//	}
+	@GetMapping("/results")
+	public List<WorkerVO> getWorkerResults() {
+		return ws.getWorkerResults();
+	}
 
 	
-	@GetMapping("/results")
-	public ModelAndView getWorkerResults() {
-	    List<WorkerVO> workerResults = ws.getWorkerResults();
-	    ModelAndView mav = new ModelAndView("results");
-	    mav.addObject("workerList", workerResults);
-	    return mav;
-	}
+	// @GetMapping("/results")
+	// public ModelAndView getWorkerResults() {
+	//     List<WorkerVO> workerResults = ws.getWorkerResults();
+	//     ModelAndView mav = new ModelAndView("results");
+	//     mav.addObject("workerList", workerResults);
+	//     return mav;
+	// }
 }
