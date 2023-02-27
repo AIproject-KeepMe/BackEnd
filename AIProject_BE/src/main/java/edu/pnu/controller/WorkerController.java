@@ -29,11 +29,11 @@ public class WorkerController {
 	}
 
 	
-	// @GetMapping("/results")
-	// public ModelAndView getWorkerResults() {
-	//     List<WorkerVO> workerResults = ws.getWorkerResults();
-	//     ModelAndView mav = new ModelAndView("results");
-	//     mav.addObject("workerList", workerResults);
-	//     return mav;
-	// }
+// 	@GetMapping("/results")
+// 	public ModelAndView getWorkerResults() {
+// 	    List<WorkerVO> workerResults = ws.getWorkerResults();
+// 	    ModelAndView mav = new ModelAndView("results");
+// 	    mav.addObject("workerList", workerResults);
+// 	    return mav;
+// 	}
 }

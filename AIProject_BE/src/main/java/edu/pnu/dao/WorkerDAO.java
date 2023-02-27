@@ -23,7 +23,7 @@ public class WorkerDAO {
 		return list;
 
 	}
-
+	
 	public List<WorkerVO> getWorkerResults() {
 	    String sql = "SELECT * from result_with_status group by recorded_time";
 	    List<WorkerVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(WorkerVO.class));
