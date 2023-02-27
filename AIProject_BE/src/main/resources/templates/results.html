@@ -7,18 +7,20 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Results</h1>
+        <h1 class="mb-4">2회 이상 낙상이 감지된 경우</h1>
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th>User</th>
-                    <th>Recorded Time</th>
+                    <th>작업자</th>
+                    <th>검지시간</th>
+                    <th>현재 상태</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="worker : ${workerList}">
                     <td th:text="${worker.user}"></td>
                     <td th:text="${#temporals.format(worker.recorded_time, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${worker.status}"></td>
                 </tr>
             </tbody>
         </table>

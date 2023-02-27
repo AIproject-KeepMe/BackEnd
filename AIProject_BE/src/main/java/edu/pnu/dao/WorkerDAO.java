@@ -25,13 +25,7 @@ public class WorkerDAO {
 	}
 	
 	public List<WorkerVO> getWorkerResults() {
-	    String sql = "SELECT r.user, r.recorded_time FROM result r\r\n"
-	    		+ "            INNER JOIN result r2 ON r.user = r2.user \r\n"
-	    		+ "            AND r.stat_label = 'falling'\r\n"
-	    		+ "            AND r2.stat_label = 'falling'\r\n"
-	    		+ "            AND r.recorded_time <> r2.recorded_time\r\n"
-	    		+ "            AND ABS(TIMESTAMPDIFF(SECOND, r.recorded_time, r2.recorded_time)) < 60\r\n"
-	    		+ "            AND r.id < r2.id";
+	    String sql = "SELECT * from result_with_status group by recorded_time";
 	    List<WorkerVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(WorkerVO.class));
 	    return list;
 	}
