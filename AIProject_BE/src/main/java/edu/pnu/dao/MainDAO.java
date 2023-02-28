@@ -25,7 +25,7 @@ public class MainDAO {
 	}
 
 	public List<VitalsignVO> vitalsign() {
-		String sql = "select u.id, u.name, u.age, ROUND(v.temp, 1) as temp, v.heartRate, v.o2 from user u, vitalsign v where u.id = v.userid";
+		String sql = "select u.id, u.name, u.age, ROUND(v.temp, 1) as temp, v.heartRate, v.o2, v.steps, v.insertTime from user u, vitalsign v where u.id = v.userid";
 		List<VitalsignVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<VitalsignVO>(VitalsignVO.class));
 		return list;
 	}
