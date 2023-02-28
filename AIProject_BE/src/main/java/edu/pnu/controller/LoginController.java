@@ -18,6 +18,7 @@ public class LoginController {
 	
     @GetMapping("/login")
     public List<MemberVO> getMember(@RequestParam String id) {
-        return ms.getMember(id);
+        System.out.println("메시지");
+    	return ms.getMember(id);
     }
 }

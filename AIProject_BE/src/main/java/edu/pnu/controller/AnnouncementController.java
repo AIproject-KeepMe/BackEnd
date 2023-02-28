@@ -32,7 +32,8 @@ public class AnnouncementController {
         return jdbcTemplate.query(sql, rowMapper);
     }
 	
-	@PostMapping("/admin/announcement")
+	
+	@PostMapping("/announcement")
 	public void addAnnouncement(
 	    @RequestParam("title") String title,
 	    @RequestParam("contents") String contents,
@@ -43,13 +44,18 @@ public class AnnouncementController {
 	}
 
 	
-	@PutMapping("/admin/announcement/{id}")
-	public void updateAnnouncement(@PathVariable("id") int id, AnnouncementVO announcement) {
+	@PutMapping("/announcement/{id}")
+	public void updateAnnouncement(@PathVariable int id, @RequestParam String title, @RequestParam String contents) {
+	    AnnouncementVO announcement = new AnnouncementVO();
+	    announcement.setTitle(title);
+	    announcement.setContents(contents);
+	    
 	    String sql = "UPDATE announcement SET title = ?, contents = ? WHERE id = ?";
 	    jdbcTemplate.update(sql, announcement.getTitle(), announcement.getContents(), id);
 	}
-	
-	@DeleteMapping("/admin/announcement/{id}")
+
+
+	@DeleteMapping("/announcement/{id}")
 	public void deleteAnnouncement(@PathVariable("id") int id) {
 	    String sql = "DELETE FROM announcement WHERE id = ?";
 	    jdbcTemplate.update(sql, id);
