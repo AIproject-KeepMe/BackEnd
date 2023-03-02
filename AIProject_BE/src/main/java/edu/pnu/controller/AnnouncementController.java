@@ -1,10 +1,14 @@
 package edu.pnu.controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +30,21 @@ public class AnnouncementController {
 	public JdbcTemplate jdbcTemplate;
 	
 	@GetMapping("/announcement")
-    public List<AnnouncementVO> getMember(String id) {
-        String sql = "SELECT * from announcement";
-        RowMapper<AnnouncementVO> rowMapper = new BeanPropertyRowMapper<>(AnnouncementVO.class);
-        return jdbcTemplate.query(sql, rowMapper);
-    }
+	public List<AnnouncementVO> getMember(@RequestParam(defaultValue = "1") int pageNo) {
+	    int pageSize = 5; // pageSize를 5로 고정
+	    int offset = (pageNo - 1) * pageSize;
+	    String sql = "SELECT * FROM announcement LIMIT ?, ?";
+	    RowMapper<AnnouncementVO> rowMapper = new BeanPropertyRowMapper<>(AnnouncementVO.class);
+	    return jdbcTemplate.query(new PreparedStatementCreator() {
+	        @Override
+	        public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+	            PreparedStatement ps = con.prepareStatement(sql);
+	            ps.setInt(1, offset);
+	            ps.setInt(2, pageSize);
+	            return ps;
+	        }
+	    }, rowMapper);
+	}
 	
 	
 	@PostMapping("/announcement")

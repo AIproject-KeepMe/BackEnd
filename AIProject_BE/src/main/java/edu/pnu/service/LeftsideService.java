@@ -7,15 +7,20 @@ import org.springframework.stereotype.Service;
 
 import edu.pnu.dao.LeftsideDAO;
 import edu.pnu.domain.UserVO;
+import edu.pnu.domain.UsersVO;
 
 @Service
 public class LeftsideService {
 
 	@Autowired
-	LeftsideDAO ud;
+	LeftsideDAO ld;
 	
 	public List<UserVO> getUserList() {
-		return ud.getUserList();
+		return ld.getUserList();
+	}
+
+	public List<UsersVO> getUsersList() {
+		return ld.getUsersList();
 	}
 
 }

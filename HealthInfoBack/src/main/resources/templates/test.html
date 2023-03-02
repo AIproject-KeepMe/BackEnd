@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script th:inline="javascript">
+	$(document).ready(function(){
+		var websocket;
+		$("#start").on("click", (e) => {
+		    start();
+		})
+		
+		$("#stop").on("click", (e) => {
+		    stop();
+		})
+		function start() {
+			websocket = new WebSocket("ws://localhost:8081/ws/health");
+			
+			websocket.onmessage = onMessage;
+			
+			console.log("start");
+		}
+		function stop() {
+			websocket.close();
+		}
+
+		function onMessage(msg) {
+		    var data = msg.data;
+		
+	        console.log(data);
+
+	        var str = "<div><b>" + data + "</b></div>";
+	        $("#msgArea").append(str);
+		}
+	})
+</script>
+</head>
+<body>
+	<button type="button" id="start">시작</button>
+	<button type="button" id="stop">종료</button>
+	<div id="msgArea" class="col"></div>
+</body>
+</html>

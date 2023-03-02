@@ -41,5 +41,4 @@ public class MainController {
 		List<GpsVO> gpsList = ts.gps();
 		return new ResponseEntity<>(gpsList, HttpStatus.OK);
 	}
-
 }

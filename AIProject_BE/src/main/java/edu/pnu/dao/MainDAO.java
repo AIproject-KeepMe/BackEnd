@@ -35,5 +35,4 @@ public class MainDAO {
 		List<GpsVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<GpsVO>(GpsVO.class));
 		return list;
 	}
-
 }

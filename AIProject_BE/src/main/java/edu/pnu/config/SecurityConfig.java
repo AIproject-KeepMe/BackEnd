@@ -41,4 +41,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.authoritiesByUsernameQuery(query2);
 	}
 }
-
