@@ -24,6 +24,11 @@ public class HealthInfoService {
 	public HealthInfoVO getHealthInfo(String id) {
 		return healthInfoDAO.getHealthInfo(id);
 	}
+	
+
+	public List<HealthInfoVO> getFirstTenHealthInfo(String id) {
+		return healthInfoDAO.getFirstTenHealthInfo(id);
+	}
 
 	public List<HealthInfoVO> getHealthInfoAll() {
 		return healthInfoDAO.getHealthInfoAll();
@@ -44,4 +49,6 @@ public class HealthInfoService {
 			msg = "error:" + e.getMessage();
 		}
 	}
+
+
 }

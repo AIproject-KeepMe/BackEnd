@@ -27,6 +27,12 @@ public class HealthInfoController {
 		return healthInfoService.getHealthInfo(id);
 	}
 	
+	// 한 id에 대해 10개의 데이터 조회
+	@GetMapping("/healthinfoTen/{id}")
+	public List<HealthInfoVO> getFirstTenHealthInfo(@PathVariable String id) {
+	    return healthInfoService.getFirstTenHealthInfo(id);
+	}
+	
 	// 모든 id에 대한 최신 건강 데이터 조회
 	@GetMapping("/healthinfo/all")
 	public List<HealthInfoVO> getAllHealthInfo() {
