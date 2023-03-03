@@ -36,9 +36,8 @@
 			<artifactId>mysql-connector-j</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>edu.pnu</groupId>
-			<artifactId>BootWebSocket</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
 	</dependencies>
 
