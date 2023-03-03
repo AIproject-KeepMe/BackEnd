@@ -17,10 +17,18 @@ public class HealthInfoVO {
 	private int heartRate;
 	private double temperature;
 	private double o2;
+	private String status;
 	private int steps;
 	private double lat;
 	private double lon;
 	private LocalDateTime recordTime;
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getId() {
 		return id;
 	}
