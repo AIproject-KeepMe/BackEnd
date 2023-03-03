@@ -23,7 +23,7 @@ public class LoginService {
 	    // HttpSession 객체를 가져옴.
 	    HttpSession session = request.getSession();
 	    
-	    // 세션 ID를 생성하고, HttpSession 객체에 저장합니다.
+	    // 세션 ID를 랜덤하게 만들고 HttpSession 객체에 저장.
 	    String sessionId = UUID.randomUUID().toString();
 	    session.setAttribute("sessionId", sessionId);
 	    return loginVO;

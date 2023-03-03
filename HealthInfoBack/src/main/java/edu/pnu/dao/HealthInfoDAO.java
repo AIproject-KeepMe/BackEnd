@@ -16,7 +16,7 @@ public class HealthInfoDAO {
 	
 	public HealthInfoVO getHealthInfo(String id) {
 		
-		String sql = String.format("select workerId as id, w.name, ROUND((TO_DAYS(NOW()) - (TO_DAYS(w.birth))) / 365) AS age, w.contact, w.position, w.role, w.employedDate, h.heartRate, h.o2, h.status, h.steps, h.lat, h.lon, h.recordTime FROM worker w, HealthLog h where (workerId = %s) and (w.workerId = h.userId) order by recordTime desc", id);
+		String sql = String.format("select workerId as id, w.name, ROUND((TO_DAYS(NOW()) - (TO_DAYS(w.birth))) / 365) AS age, w.contact, w.position, w.role, w.employedDate, h.heartRate, h.temperature, h.o2, h.status, h.steps, h.lat, h.lon, h.recordTime FROM worker w, HealthLog h where (workerId = %s) and (w.workerId = h.userId) order by recordTime desc", id);
 		List<HealthInfoVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<HealthInfoVO>((HealthInfoVO.class)));
 		return list.get(0);
 	}
@@ -26,7 +26,7 @@ public class HealthInfoDAO {
 		String sql = "SELECT w.workerId AS id, w.name, \r\n"
 				+ "  ROUND((TO_DAYS(NOW()) - (TO_DAYS(w.birth))) / 365) AS age, \r\n"
 				+ "  w.contact, w.position, w.role, w.employedDate, \r\n"
-				+ "  h.heartRate, h.o2, h.status, h.steps, h.lat, h.lon, h.recordTime \r\n"
+				+ "  h.heartRate, h.temperature, h.o2, h.status, h.steps, h.lat, h.lon, h.recordTime \r\n"
 				+ "FROM worker w \r\n"
 				+ "JOIN HealthLog h ON w.workerId = h.userId \r\n"
 				+ "JOIN (\r\n"

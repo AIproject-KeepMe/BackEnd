@@ -15,7 +15,7 @@ public class HealthInfoVO {
 	private String role;
 	private Date employedDate;
 	private int heartRate;
-	private double temp;
+	private double temperature;
 	private double o2;
 	private int steps;
 	private double lat;
@@ -70,11 +70,11 @@ public class HealthInfoVO {
 	public void setHeartRate(int heartRate) {
 		this.heartRate = heartRate;
 	}
-	public double getTemp() {
-		return temp;
+	public double getTemperature() {
+		return temperature;
 	}
-	public void setTemp(double temp) {
-		this.temp = temp;
+	public void setTemperature(double temperature) {
+		this.temperature = temperature;
 	}
 	public double getO2() {
 		return o2;
