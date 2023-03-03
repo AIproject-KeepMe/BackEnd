@@ -15,7 +15,7 @@ public class HealthInfoDAO {
 	public JdbcTemplate jdbcTemplate;
 	
 	public HealthInfoVO getHealthInfo(String id) {
-		
+		// id, 이름, 나이, 연락처, 직위, 입사일자, 심박, 체온, 산소포화도, 상태, 걸음수, 위도, 경도, 기록일자
 		String sql = String.format("select w.workerId as id, w.name, ROUND((TO_DAYS(NOW()) - (TO_DAYS(w.birth))) / 365) AS age, w.contact, w.position, w.role, w.employedDate, h.heartRate, h.temperature, h.o2, h.status, h.steps, h.lat, h.lon, h.recordTime FROM worker w, HealthLog h where (w.workerId = %s) and (w.workerId = h.workerId) order by recordTime desc", id);
 		List<HealthInfoVO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<HealthInfoVO>((HealthInfoVO.class)));
 		return list.get(0);
