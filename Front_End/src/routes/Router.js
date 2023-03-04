@@ -1,7 +1,6 @@
 import React, { lazy } from 'react';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));

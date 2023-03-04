@@ -23,6 +23,7 @@
   ],
   "plugins": [
     "prettier",
+    "react",
     "react-hooks"
   ],
   "rules": {
