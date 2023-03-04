@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Button, TextField, Stack } from '@mui/material';
 import axios from 'axios';
-import bcrypt from 'bcryptjs';
-import { useNavigate } from 'react-router-dom'; // useNavigate 추가
+import bcrypt from 'bcryptjs'; // bcrypt 추가
+import { useNavigate } from 'react-router-dom'; // useNavigate 
 
 const AuthRegister = ({ subtext, subtitle, onChange }) => {
     const navigate = useNavigate(); // useNavigate 설정
@@ -12,7 +12,6 @@ const AuthRegister = ({ subtext, subtitle, onChange }) => {
         password: '',
         email: '',
     });
-
     const handleCheckId = async () => {
         try {
             const res = await axios.get(`/checkId?id=${formData.adminId}`);
@@ -51,6 +50,8 @@ const AuthRegister = ({ subtext, subtitle, onChange }) => {
             [event.target.name]: event.target.value,
         });
     };
+
+
 
     return (
         <Box component="form" noValidate onSubmit={handleSubmit}>

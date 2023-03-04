@@ -14,27 +14,39 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
         password: '',
     });
 
+    const handleCreateCookie_time = (adminId) => {
+        const date = new Date();
+        date.setTime(date.getTime() + 1 * 24 * 60 * 60 * 1000); // 1일 동안 유효한 쿠키 생성
+        const expires = `expires=${date.toUTCString()}`;
+        document.cookie = `adminId=${adminId};${expires};path=/`;
+    }
+
+    const handleCreateCookie = (adminId) => {
+        const expires = 'expires=0'; // 만료 기간을 브라우저가 종료될 때까지로 설정
+        document.cookie = `adminId=${adminId};${expires};path=/`;
+      }
+      
+      
+
     const handleSubmit = async () => {
         try {
-            const res = await axios.get(`/login?adminId=${formData.adminId}`, {
+            const res = await axios.get(`/login?id=${formData.adminId}`, {
                 withCredentials: true // 쿠키를 전달할 수 있도록 설정
             });
-            console.log('**res::', res.data)
             if (res.data.length === 0) {
                 throw new Error('Login failed');
             }
-            console.log('26번째 줄')
+            
             const hashedPassword = res.data.password; // 데이터베이스에서 해싱된 비밀번호 가져오기
-            console.log(hashedPassword)
-            console.log('28번째 줄')
             const isMatch = await bcrypt.compare(formData.password, hashedPassword); // 입력받은 비밀번호와 비교
             if (!isMatch) {
                 throw new Error('Login failed');
             }
             alert(`${res.data.adminId}님 환영합니다! 메인페이지로 이동합니다`)
+            handleCreateCookie(res.data.adminId); // 쿠키 생성
             navigate('/');
         } catch (e) {
-            // console.error(e);
+            console.error(e);
             console.log('로그인 실패')
             alert('로그인에 실패하였습니다.');
         }
@@ -61,8 +73,8 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
                     <Typography variant="subtitle1" fontWeight={600} component="label" htmlFor="adminId" mb="5px">
                         ID
                     </Typography>
-                    <CustomTextField id="id" name="id" variant="outlined" fullWidth onChange={handleChange} />
-                    </Box>
+                    <CustomTextField id="adminId" name="adminId" variant="outlined" fullWidth onChange={handleChange} />
+                </Box>
                 <Box mt="25px">
                     <Typography variant="subtitle1" fontWeight={600} component="label" htmlFor="password" mb="5px">
                         Password
@@ -75,7 +87,7 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
                         to="/"
                         fontWeight="500"
                         sx={{
-                            textDecoration: 'none',
+                            textDecoration: 'none', 
                             color: 'primary.main',
                         }}
                     >
@@ -94,4 +106,3 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
 };
 
 export default AuthLogin;
-

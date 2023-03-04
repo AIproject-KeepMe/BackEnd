@@ -46,7 +46,6 @@ const Login2 = () => {
                   <Typography variant="subtitle2" textAlign="center" color="textSecondary" mb={1}>
                     로그인 해주세요.
                   </Typography>
-                  
                 }
                 subtitle={
                   <Stack direction="row" spacing={1} justifyContent="center" mt={3}>
