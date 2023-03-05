@@ -4,7 +4,14 @@ public class LoginVO {
 
 	private String adminId;
 	private String password;
+	private String sessionId; // 세션ID 추가
 	
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
 	public String getAdminId() {
 		return adminId;
 	}

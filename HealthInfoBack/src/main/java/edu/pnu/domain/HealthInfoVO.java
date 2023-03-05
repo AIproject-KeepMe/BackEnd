@@ -21,8 +21,16 @@ public class HealthInfoVO {
 	private int steps;
 	private double lat;
 	private double lon;
+	private int result;
 	private LocalDateTime recordTime;
 	
+
+	public int getResult() {
+		return result;
+	}
+	public void setResult(int result) {
+		this.result = result;
+	}
 	public String getStatus() {
 		return status;
 	}

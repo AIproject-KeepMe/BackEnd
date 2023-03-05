@@ -19,8 +19,14 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public LoginVO getMember(@RequestParam String id, HttpServletRequest request) {
-	    return loginService.getMember(id, request);
+	    System.out.println(id);
+		return loginService.getMember(id, request);
 	}
+	
+    @GetMapping("/checkId")
+    public boolean checkId(@RequestParam String id) {
+        return loginService.checkId(id);
+    }
 	
 	@PostMapping("/logout")
 	public void logout(HttpServletRequest request) {

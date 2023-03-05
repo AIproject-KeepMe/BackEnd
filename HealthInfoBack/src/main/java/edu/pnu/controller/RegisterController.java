@@ -15,9 +15,9 @@ public class RegisterController {
 	
 	@PostMapping("/addMember")
 	public void addMember(RegisterVO registerVO) {
-		String sql = "insert into admin (adminId, password, name, contact, position, email) values (?, ?, ?, ?, ?, ?)";
+		String sql = "insert into admin (adminId, password, name, email) values (?, ?, ?, ?)";
 		try {
-			jdbcTemplate.update(sql, registerVO.getAdminId(), registerVO.getPassword(), registerVO.getName(), registerVO.getContact(), registerVO.getPosition(), registerVO.getEmail());
+			jdbcTemplate.update(sql, registerVO.getAdminId(), registerVO.getPassword(), registerVO.getName(),  registerVO.getEmail());
 			System.out.println("들어갔음");
 		} catch (Exception e) {
 			e.printStackTrace();
